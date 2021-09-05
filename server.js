@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const path = require('path') 
 
-//const errorHandler = require('./_helpers/error-handler');
+const errorHandler = require('./_helpers/error.handler');
 
 require('dotenv').config({path: __dirname + '/.env'})
 
