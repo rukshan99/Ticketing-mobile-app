@@ -2,17 +2,30 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { createAppContainer } from "react-navigation";
+import { createDrawerNavigator } from 'react-navigation-drawer'; 
+
+import ChooseLocation from './components/ChooseLocation';
+import ScanQR from './components/ScanQR';
 
 export default function App() {
   return (
-    <PaperProvider>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </PaperProvider>
+    <AppContainer />
   );
 }
+
+const AppNavigator = createDrawerNavigator({
+  ChooseLocation: {
+    screen: ChooseLocation
+  },
+  ScanQR: {
+    screen: ScanQR
+  }
+},{
+  initialRouteName: "ChooseLocation"
+});
+
+const AppContainer = createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {
