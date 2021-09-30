@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, View, Text } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default class ChooseLocation extends Component {
     render() {
@@ -8,8 +7,8 @@ export default class ChooseLocation extends Component {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Choose Location</Text>
                 <Button
-                    title="Go to ScanQR"
-                    onPress={() => this.props.navigation.navigate('ScanQR')}
+                    title="Go to CompleteTrip"
+                    onPress={() => this.props.navigation.navigate('CompleteTrip')}
                 />
             </View>
         )
