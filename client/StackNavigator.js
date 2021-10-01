@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import ChooseLocation from './components/ChooseLocation';
 import CompleteTrip from './components/CompleteTrip';
+import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ const TripStackNavigator = () => {
     <Stack.Navigator  screenOptions={screenOptionStyle}>
       <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
       <Stack.Screen name="CompleteTrip" component={CompleteTrip} />
+      <Stack.Screen name="GenerateQR" component={GenerateQR} />
     </Stack.Navigator>
   );
 }
