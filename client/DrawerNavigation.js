@@ -2,7 +2,7 @@ import React from "react";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { TripStackNavigator, ScanQRStackNavigator } from "./StackNavigator";
+import { TripStackNavigator, ScanQRStackNavigator, UserDetailsNavigator } from "./StackNavigator";
 
 const Drawer = createDrawerNavigator();
 
@@ -11,6 +11,7 @@ const DrawerNavigator = () => {
     <Drawer.Navigator>
       <Drawer.Screen name="Book Trip" component={TripStackNavigator} />
       <Drawer.Screen name="Scan QR" component={ScanQRStackNavigator} />
+      <Drawer.Screen name="User Details" component={UserDetailsNavigator} />
     </Drawer.Navigator>
   );
 }

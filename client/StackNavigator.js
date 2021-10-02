@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ChooseLocation from './components/ChooseLocation';
 import CompleteTrip from './components/CompleteTrip';
 import ScanQR from './components/ScanQR';
+import UserDetails from "./components/UserDetails";
 
 const Stack = createStackNavigator();
 
@@ -32,4 +33,12 @@ const ScanQRStackNavigator = () => {
   );
 }
 
-export { TripStackNavigator, ScanQRStackNavigator };
+const UserDetailsNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="User Details" component={UserDetails} />
+    </Stack.Navigator>
+  );
+}
+
+export { TripStackNavigator, ScanQRStackNavigator, UserDetailsNavigator };
