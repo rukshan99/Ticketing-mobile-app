@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { uuid } = require('uuidv4');
 const bcrypt = require('bcryptjs');
 
-const HttpError = require('../models/http-error');
+const HttpError = require('../models/http-error.model');
 const User = require('../schemas/user.schema');
 
 const authentication= async (req, res, next) => {
@@ -83,10 +83,12 @@ const registerUser = async (req, res, next) => {
         cvv
     });
 
+    let registerUser
+
     try {
         const session = await mongoose.startSession();
         session.startTransaction();
-        await newUser.save({ session: session });
+        registerUser = await newUser.save({ session: session });
         await session.commitTransaction();
     } catch (err) {
         const error = new HttpError(
