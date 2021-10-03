@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { uuid } = require('uuidv4');
 const bcrypt = require('bcryptjs');
 
-const HttpError = require('../models/http-error');
+const HttpError = require('../models/http-error.model');
 const User = require('../schemas/user.schema');
 
 const registerUser = async (req, res, next) => {
