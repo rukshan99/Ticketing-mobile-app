@@ -5,6 +5,8 @@ import ChooseLocation from './components/ChooseLocation';
 import CompleteTrip from './components/CompleteTrip';
 import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
+import UserDetails from "./components/UserDetails";
+import AddBusDetails from "./components/AddBusDetails";
 import UserAccount from './components/UserAccount';
 import SingleTrip from './components/SingleTrip';
 
@@ -36,6 +38,14 @@ const ScanQRStackNavigator = () => {
   );
 }
 
+const UserDetailsNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="User Details" component={UserDetails} />
+    </Stack.Navigator>
+  );
+}
+
 const UserAccStackNavigator = () => {
   return (
     <Stack.Navigator  screenOptions={screenOptionStyle}>
@@ -45,4 +55,12 @@ const UserAccStackNavigator = () => {
   );
 }
 
-export { TripStackNavigator, ScanQRStackNavigator, UserAccStackNavigator };
+const BusDetailsNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Add a Bus" component={AddBusDetails} />
+    </Stack.Navigator>
+  );
+}
+
+export { TripStackNavigator, ScanQRStackNavigator, UserAccStackNavigator, UserDetailsNavigator, BusDetailsNavigator };
