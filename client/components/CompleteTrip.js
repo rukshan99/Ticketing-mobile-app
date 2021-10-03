@@ -19,10 +19,11 @@ export default class CompleteTrip extends Component {
                 />
                 <Button
                     title="Go to ScanQR"
-                    onPress={() => this.props.navigation.navigate('')} //go to generate qr
+                    onPress={() => this.props.navigation.navigate('GenerateQR')}
                 />
                 <Button
                     title="Back"
+                    color="#ed665c"
                     onPress={() => this.props.navigation.navigate('')} //go back to select route
                 />
             </View>

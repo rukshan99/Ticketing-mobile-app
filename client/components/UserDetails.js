@@ -30,24 +30,24 @@ export default class UserDetails extends React.Component {
 
     text: {
 		position: 'absolute',
-        width: '218px',
-        height: '35px',
-        left: '96px',
-        top: '25px',
+        width: 218,
+        height: 35,
+        left: 96,
+        top: 25,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontWeight: 'normal',
-        fontSize: '24px',
-        lineHeight: '42px',
+        fontSize: 24,
+        lineHeight: 42,
         textAlign: 'center',
 
         color: '#000000'
     },
-    saveBTN: {
-        position: 'absolute',
-        width: '160px',
-        height: '41px',
-        top: '480px',
-    },
+    // saveBTN: {
+    //     position: 'absolute',
+    //     width: 160,
+    //     height: '41px',
+    //     top: '480px',
+    // },
 
   });

@@ -3,8 +3,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import ChooseLocation from './components/ChooseLocation';
 import CompleteTrip from './components/CompleteTrip';
+import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
 import UserDetails from "./components/UserDetails";
+import AddBusDetails from "./components/AddBusDetails";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,7 @@ const TripStackNavigator = () => {
     <Stack.Navigator  screenOptions={screenOptionStyle}>
       <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
       <Stack.Screen name="CompleteTrip" component={CompleteTrip} />
+      <Stack.Screen name="GenerateQR" component={GenerateQR} />
     </Stack.Navigator>
   );
 }
@@ -41,4 +44,12 @@ const UserDetailsNavigator = () => {
   );
 }
 
-export { TripStackNavigator, ScanQRStackNavigator, UserDetailsNavigator };
+const BusDetailsNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Add a Bus" component={AddBusDetails} />
+    </Stack.Navigator>
+  );
+}
+
+export { TripStackNavigator, ScanQRStackNavigator, UserDetailsNavigator, BusDetailsNavigator };
