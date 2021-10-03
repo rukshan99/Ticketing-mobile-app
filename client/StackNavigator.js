@@ -5,6 +5,8 @@ import ChooseLocation from './components/ChooseLocation';
 import CompleteTrip from './components/CompleteTrip';
 import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
+import Registration from "./components/UserRegistration";
+import CreditCard from "./components/CreditCardForm";
 
 const Stack = createStackNavigator();
 
@@ -34,4 +36,21 @@ const ScanQRStackNavigator = () => {
   );
 }
 
-export { TripStackNavigator, ScanQRStackNavigator };
+const UserRegistrationStackNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Registration" component={Registration} />
+    </Stack.Navigator>
+  );
+}
+
+const CreditCardStackNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="CreditCard" component={CreditCard} />
+    </Stack.Navigator>
+  );
+}
+
+
+export { TripStackNavigator, ScanQRStackNavigator, UserRegistrationStackNavigator, CreditCardStackNavigator };
