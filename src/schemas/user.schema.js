@@ -13,4 +13,4 @@ const userSchema = new mongoose.Schema({
     cvv: { type: Number, required: [true, 'card security number is required'] }
 })
 
-module.exports =  mongoose.model('Users', userSchema);
+module.exports =  mongoose.model('User', userSchema);

@@ -6,7 +6,10 @@ import CompleteTrip from './components/CompleteTrip';
 import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
 import Registration from "./components/UserRegistration";
-import CreditCard from "./components/CreditCardForm";
+import UserDetails from "./components/UserDetails";
+import AddBusDetails from "./components/AddBusDetails";
+import UserAccount from './components/UserAccount';
+import SingleTrip from './components/SingleTrip';
 
 const Stack = createStackNavigator();
 
@@ -43,14 +46,29 @@ const UserRegistrationStackNavigator = () => {
     </Stack.Navigator>
   );
 }
-
-const CreditCardStackNavigator = () => {
+const UserDetailsNavigator = () => {
   return (
     <Stack.Navigator  screenOptions={screenOptionStyle}>
-      <Stack.Screen name="CreditCard" component={CreditCard} />
+      <Stack.Screen name="User Details" component={UserDetails} />
     </Stack.Navigator>
   );
 }
 
+const UserAccStackNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="UserAccount" component={UserAccount} />
+      <Stack.Screen name="SingleTrip" component={SingleTrip} />
+    </Stack.Navigator>
+  );
+}
 
-export { TripStackNavigator, ScanQRStackNavigator, UserRegistrationStackNavigator, CreditCardStackNavigator };
+const BusDetailsNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Add a Bus" component={AddBusDetails} />
+    </Stack.Navigator>
+  );
+}
+
+export { TripStackNavigator, ScanQRStackNavigator, UserAccStackNavigator, UserDetailsNavigator, BusDetailsNavigator, UserRegistrationStackNavigator };

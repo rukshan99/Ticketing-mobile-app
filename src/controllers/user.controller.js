@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
 const { uuid } = require('uuidv4');
+const bcrypt = require('bcryptjs');
 
 const HttpError = require('../models/http-error');
 const User = require('../schemas/user.schema');
@@ -13,7 +14,8 @@ const registerUser = async (req, res, next) => {
         return next(new HttpError('Invalid inputs! Please check again.', 422));
     }
 
-    const { name,
+    const { 
+        name,
         email,
         password,
         mobile,
