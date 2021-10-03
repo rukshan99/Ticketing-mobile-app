@@ -5,6 +5,8 @@ import ChooseLocation from './components/ChooseLocation';
 import CompleteTrip from './components/CompleteTrip';
 import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
+import UserAccount from './components/UserAccount';
+import SingleTrip from './components/SingleTrip';
 
 const Stack = createStackNavigator();
 
@@ -34,4 +36,13 @@ const ScanQRStackNavigator = () => {
   );
 }
 
-export { TripStackNavigator, ScanQRStackNavigator };
+const UserAccStackNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="UserAccount" component={UserAccount} />
+      <Stack.Screen name="SingleTrip" component={SingleTrip} />
+    </Stack.Navigator>
+  );
+}
+
+export { TripStackNavigator, ScanQRStackNavigator, UserAccStackNavigator };
