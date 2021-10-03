@@ -5,13 +5,14 @@ exports.saveTrip = async (req, res, next) => {
     if (!req.body) {
         res.send(new HttpError('Invalid request body', 400));
     }
-    const { source, destination, route, bus, noOfPassengers, passengerId } = req.body;
+    const { source, destination, route, bus, noOfPassengers, fare, passengerId } = req.body;
     const trip = new Trip({
         source,
         destination,
         route,
         bus,
         noOfPassengers,
+        fare,
         passengerId
     });
     try {
