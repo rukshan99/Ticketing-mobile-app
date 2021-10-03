@@ -30,7 +30,7 @@ const renderItem = ({ item }) => {
   return (
     <Item
       item={item}
-      onPress={() => setSelectedId(item.id)}
+      onPress={() => this.props.navigation.navigate('SingleTrip', { tripId: item.id })}
       backgroundColor={{ backgroundColor }}
       textColor={{ color }}
     />
