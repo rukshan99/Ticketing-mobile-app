@@ -3,8 +3,6 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { Button, View, Text, Alert } from 'react-native';
 import { useTable } from "react-table";
 import axios from 'axios';
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -63,32 +61,6 @@ const BusList = (props) => {
     }
     };
   
-    const openBus = (rowIndex) => {
-      const id = tripsRef.current[rowIndex]._id;
-
-      navigation.navigate('Edit Bus',{id:id})
-     
-      // props.history.push("/tutorials/" + id);
-    };
-  
-    const deleteBus = async (rowIndex) => {
-      const id = tripsRef.current[rowIndex]._id;
-      if (window.confirm(`Do You want to delete a Bus with ID ${tripsRef.current[rowIndex].busID} ?`)) {
-      try {
-				await axios.delete(`http://localhost:4000/api/v1/buses/delete/${id}`);
-			
-        // let newBuses = [...tripsRef.current];
-        // newBuses.splice(rowIndex, 1);
-
-        // setTrips(newBuses);
-        refreshList();
-			} catch (error) {
-				alert(error.response.data.error);
-			}
-    }
-      
-    };
-  
     const columns = useMemo(
       () => [
         {
@@ -110,25 +82,6 @@ const BusList = (props) => {
         {
             Header: "Bus No",
             accessor: "BusNo",
-          },
-          {
-            Header: "Actions",
-            accessor: "actions",
-            Cell: (props) => {
-              // console.log(props.row.original._id)
-              const rowIdx = props.row.id;
-              return (
-                <div>
-                  <span onClick={() => openBus(rowIdx)}>
-                    <FaEdit size={22} color="black"/>
-                  </span> &nbsp;
-    
-                  <span onClick={() => deleteBus(rowIdx)}>
-                  <MdDelete size={22} color="red"/>
-                  </span>
-                </div>
-              );
-            },
           },
         ],
         []
@@ -213,6 +166,11 @@ const BusList = (props) => {
 
       </div>
       </div>
+      <View style={{ width: '40%',alignSelf: 'center',marginVertical: 30}}>
+                    <Button title="Edit"
+                        onPress={() => navigation.navigate('Time Table')}
+                    />
+                </View>
       </React.Fragment>
     );
 
@@ -221,3 +179,5 @@ const BusList = (props) => {
 
   
   export default BusList;
+
+  

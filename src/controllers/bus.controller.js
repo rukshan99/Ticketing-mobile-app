@@ -60,3 +60,33 @@ exports.getSearchForBuses = async (req, res, next) => {
 		next(error);
 	}
 };
+
+exports.getBus = async (req, res) => {
+  const busId = req.params.busId;
+  await Bus.findOne({ _id: new ObjectId(busId) })
+  .then(data => {
+    res.status(200).send({ data: data });
+  })
+  .catch(error => {
+    res.status(500).send({ error: error.message });
+  });
+}
+
+exports.updateBus = async (req, res) => {
+  console.log(req.body)
+  if(!req.body){
+    return res.status(400).send({
+      message: "Data to update can not be empty!"
+    });
+  }
+    await Bus.findByIdAndUpdate(req.params.id,req.body,{useFindAndModify : false})
+      .then(data => {
+        if(!data){
+          res.status(400).send({ message: 'cannot update bus' });
+        }else res.status(200).send({ data: data });
+      })
+      .catch(error => {
+        res.status(500).send({ error: error.message });
+      });
+  
+}
