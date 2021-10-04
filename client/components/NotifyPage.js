@@ -88,6 +88,8 @@ export default class NotifyPage extends Component {
                 <Button title="Notify"
                         onPress={() => this.submit()}
                 />
+                 <Button title="Cancel"
+                />
 
             </View>
         )
