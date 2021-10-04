@@ -83,10 +83,12 @@ const registerUser = async (req, res, next) => {
         cvv
     });
 
+    let registerUser
+
     try {
         const session = await mongoose.startSession();
         session.startTransaction();
-        await newUser.save({ session: session });
+        registerUser = await newUser.save({ session: session });
         await session.commitTransaction();
     } catch (err) {
         const error = new HttpError(
