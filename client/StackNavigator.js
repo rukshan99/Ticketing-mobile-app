@@ -10,7 +10,9 @@ import UserDetails from "./components/UserDetails";
 import AddBusDetails from "./components/AddBusDetails";
 import UserAccount from './components/UserAccount';
 import SingleTrip from './components/SingleTrip';
-// import NotifyPage from './components/NotifyPage';
+import TimeTable from './components/Timetable';
+import editBus from './components/EditBusDetails';
+import busDetails from './components/BusDetails';
 
 const Stack = createStackNavigator();
 
@@ -72,4 +74,29 @@ const BusDetailsNavigator = () => {
   );
 }
 
-export { TripStackNavigator, ScanQRStackNavigator, UserAccStackNavigator, UserDetailsNavigator, BusDetailsNavigator, UserRegistrationStackNavigator };
+const TimetableNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Time Table" component={TimeTable} />
+      <Stack.Screen name="Edit Bus" component={editBus} />
+    </Stack.Navigator>
+  );
+}
+
+const bDetailsNavigator = () => {
+  return (
+    <Stack.Navigator  screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Bus Details" component={busDetails} />
+    </Stack.Navigator>
+  );
+}
+
+export { TripStackNavigator, 
+  ScanQRStackNavigator, 
+  UserAccStackNavigator, 
+  UserDetailsNavigator, 
+  BusDetailsNavigator, 
+  UserRegistrationStackNavigator,
+  TimetableNavigator,
+  bDetailsNavigator
+};
