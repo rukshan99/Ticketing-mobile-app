@@ -1,41 +1,13 @@
 import React, { Component } from 'react';
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-];
+import axios from 'axios';
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
     <Text style={[styles.title, textColor]}>{item.title}</Text>
   </TouchableOpacity>
 );
-
-const renderItem = ({ item }) => {
-  const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
-  const color = item.id === selectedId ? 'white' : 'black';
-
-  return (
-    <Item
-      item={item}
-      onPress={() => this.props.navigation.navigate('SingleTrip', { tripId: item.id })}
-      backgroundColor={{ backgroundColor }}
-      textColor={{ color }}
-    />
-  );
-};
 
 const getLoggedInUserData = async () => {
   try {
@@ -56,23 +28,41 @@ export default class UserAccount extends Component {
     selectedTicketId: ''
   };
 
-  componentDidMount() {
+  componentDidMount = async () => {
     const userid = getLoggedInUserData();
+    try {
+      const res = await axios.get('http://localhost:4000/api/v1/trips');
+      console.log(res.data);
+      //this.setState({ticketsList: res.data});
+    } catch(error) {
+      console.error(error);
+    }
+
     //get user obj by id
-    //get ticket list
   }
+
+  renderItem = ({ item }) => {
+    const backgroundColor = item._id === this.state.selectedTicketId ? "#6e3b6e" : "#f9c2ff";
+    const color = item._id === this.state.selectedTicketId ? 'white' : 'black';
+  
+    return (
+      <Item
+        item={item}
+        onPress={() => this.props.navigation.navigate('SingleTrip', { tripId: item._id })}
+        backgroundColor={{ backgroundColor }}
+        textColor={{ color }}
+      />
+    );
+  };
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View>
-          username{'\n'}
-        </View>
         <FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          extraData={selectedId}
+          data={this.state.ticketsList}
+          renderItem={this.renderItem}
+          keyExtractor={(item) => item._id}
+          extraData={this.state.selectedTicketId}
         />
       </SafeAreaView>
     );
