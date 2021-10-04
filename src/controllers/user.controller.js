@@ -83,10 +83,12 @@ const registerUser = async (req, res, next) => {
         cvv
     });
 
+    let registerUser
+
     try {
         const session = await mongoose.startSession();
         session.startTransaction();
-        await newUser.save({ session: session });
+        registerUser = await newUser.save({ session: session });
         await session.commitTransaction();
     } catch (err) {
         const error = new HttpError(
@@ -99,5 +101,59 @@ const registerUser = async (req, res, next) => {
     res.status(201).json({ User: registerUser });
 };
 
+const findAllDriver = (req, res) => {
+  
+  User.find({ role: 'Driver' })
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found Driver " });
+      else res.send({ data: data });
+      // console.log(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: err.message || "Error retrieving Driver" });
+    });
+
+};
+
+const findAllConductors = (req, res) => {
+  
+  User.find({ role: 'Conductor' })
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found Driver " });
+      else res.send({ data: data });
+      // console.log(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: err.message || "Error retrieving Driver" });
+    });
+
+};
+
+const findAllInspectors = (req, res) => {
+  
+  User.find({ role: 'Inspector' })
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found Driver " });
+      else res.send({ data: data });
+      // console.log(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: err.message || "Error retrieving Driver" });
+    });
+
+};
+
+exports.findAllDriver = findAllDriver;
+exports.findAllConductors = findAllConductors;
+exports.findAllInspectors = findAllInspectors;
 exports.registerUser = registerUser;
 exports.authentication = authentication;

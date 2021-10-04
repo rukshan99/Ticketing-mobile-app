@@ -15,6 +15,7 @@ export default function ScanQR() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
+    this.props.navigation.navigate('', {data: JSON.parse(`${<em>data</em>}`)})
     alert(`${<em>data</em>}`);
   };
 

@@ -9,7 +9,7 @@ exports.saveBus = async (req, res, next) => {
         res.send(new HttpError('Invalid request body', 400));
     }
     const { busID, date, time, route, BusNo, Stations } = req.body;
-    //const _stations = Stations.split(',');
+    const _stations = Stations.split(',');
 
     const bus = new Bus({
         busID,
@@ -17,7 +17,7 @@ exports.saveBus = async (req, res, next) => {
         time,
         route,
         BusNo,
-        Stations: []
+        Stations:_stations
     });
     try {
         const savedBus = await bus.save();

@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Switch, Button, TextInput} from "react-native";
 
+let paymentForm;
+
 export default class CreditCard extends Component {
     constructor(props) {
      
         super(props)
      
         this.state = {
-          Cardholder:'',
-          cardNumber: '',
-          expiration: '',
-          cvv: '',
-          focus:''
+          holdername:'',
+          cardnumber: '',
+          expdate: '',
+          cvv: ''
      
         }
+
+        this.signupSubmitHandler=this.setPayment.bind(this);
      
       }
 
+    setPayment = () =>{
+      // const{ holdername , cardnumber, expdate, cvv} = this.state;
+
+    }
      
     // state = { useLiteCreditCardInput: false };
 
@@ -28,16 +35,17 @@ export default class CreditCard extends Component {
       return (
 
         <View>
-            <TextInput
-                
+            <TextInput  
                 style={styles.TextInputStyleClass}
                 placeholder="Cardholder Name"
-                onChangeText={Cardholder => this.setState({Cardholder})}
+                onChangeText={holdername => this.setState({holdername})}
+                value={this.state.holdername}
             />
             <TextInput
                 style={styles.TextInputStyleClass}
                 placeholder="Card Number"
-                onChangeText={cardNumber => this.setState({cardNumber})}
+                onChangeText={cardnumber => this.setState({cardnumber})}
+                value={this.state.cardnumber}
             />
       <View style={styles.row}>
             <TextInput
@@ -48,20 +56,27 @@ export default class CreditCard extends Component {
                 },
             ]}
             placeholder="Expiration Date"
-            onChangeText={expiration => this.setState({expiration})}
+            onChangeText={expdate => this.setState({expdate})}
+            value={this.state.expdate}
             />
             <TextInput
             style={styles.TextInputStyleClass}
             placeholder="Security Code"
             onChangeText={cvv => this.setState({cvv})}
+            // onChange={e => {
+            //   setCvv(e.target.value);
+            //   setPayment({...payment, cvv});
+            //   paymentForm = payment;
+          // }}
+            value={this.state.cvv}
             />
       </View>
-      <Button title="PAY" onPress={this.onSubmit} />
     </View>
         
       );
         }
 }
+export { paymentForm };
 
 
   const styles = StyleSheet.create({
