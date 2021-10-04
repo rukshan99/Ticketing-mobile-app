@@ -156,4 +156,5 @@ exports.findAllDriver = findAllDriver;
 exports.findAllConductors = findAllConductors;
 exports.findAllInspectors = findAllInspectors;
 exports.registerUser = registerUser;
+exports.registerUser = registerUser;
 exports.authentication = authentication;
