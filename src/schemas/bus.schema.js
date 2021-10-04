@@ -9,4 +9,4 @@ const tripBusSchema = new mongoose.Schema({
     Stations: []
 })
 
-module.exports =  mongoose.model('Bus', tripBusSchema);
+module.exports = mongoose.model('Bus', tripBusSchema);

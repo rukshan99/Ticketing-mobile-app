@@ -11,4 +11,5 @@ const tripSchema = new Schema({
     passengerId: { type: Schema.ObjectId, required: [true, 'PassengerId is required'] },
 })
 
+
 module.exports =  mongoose.model('Trip', tripSchema);
