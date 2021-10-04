@@ -29,7 +29,7 @@ export default class AddBusDetails extends Component {
                 alert('Data cannot be empty..! ' + error.message)
             })
         console.warn(this.state);
-        this.props.navigation.navigate('Time Table')
+        this.props.navigation.navigate('Notify')
     }
 
     componentDidMount = async () =>{

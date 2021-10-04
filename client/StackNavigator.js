@@ -13,6 +13,7 @@ import SingleTrip from './components/SingleTrip';
 import TimeTable from './components/Timetable';
 import editBus from './components/EditBusDetails';
 import busDetails from './components/BusDetails';
+import notify from './components/Notify';
 
 const Stack = createStackNavigator();
 
@@ -79,6 +80,7 @@ const TimetableNavigator = () => {
     <Stack.Navigator  screenOptions={screenOptionStyle}>
       <Stack.Screen name="Time Table" component={TimeTable} />
       <Stack.Screen name="Edit Bus" component={editBus} />
+      <Stack.Screen name="Notify" component={notify} />
     </Stack.Navigator>
   );
 }
