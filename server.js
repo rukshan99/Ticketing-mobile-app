@@ -15,6 +15,7 @@ require('dotenv').config({path: __dirname + '/.env'})
 const TripRoutes = require('./src/routes/trip.routes');
 const UserRoutes = require('./src/routes/user.routes');
 const BusRoutes = require('./src/routes/bus.routes');
+const TripLogRoutes = require('./src/routes/tripLog.routes');
 
 const connectionString = process.env['MONGO_CONNECTION_STRING'];
 
@@ -36,6 +37,7 @@ app.use(errorHandler);
 app.use('/api/v1/trips/', TripRoutes);
 app.use('/api/v1/user/', UserRoutes);
 app.use('/api/v1/buses/', BusRoutes);
+app.use('/api/v1/tripLogs/', TripLogRoutes);
 
 mongoose
 .connect(connectionString)

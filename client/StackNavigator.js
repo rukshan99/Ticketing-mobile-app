@@ -10,6 +10,7 @@ import UserDetails from "./components/UserDetails";
 import AddBusDetails from "./components/AddBusDetails";
 import UserAccount from './components/UserAccount';
 import SingleTrip from './components/SingleTrip';
+// import NotifyPage from './components/NotifyPage';
 
 const Stack = createStackNavigator();
 
