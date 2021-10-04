@@ -11,18 +11,50 @@ export default class Registration extends Component {
      
         this.state = {
      
-          UserName: '',
-          userMobile:'',
-          UserEmail: '',
-          UserPassword: '',
-          UserType:'Passenger',
+          name: '',
+          email:'',
+          password: '',
+          mobile: '',
+          role:'Passenger',
+          holdername:'',
+          cardnumber:'',
+          expdate:'',
+          cvv:'',
           isPassenger:true,
           isConductor:false,
           isDriver:false
      
         }
         this.typeSelectHandler=this.typeSelectHandler.bind(this);
+        this.signupSubmitHandler=this.signupSubmitHandler.bind(this);
      
+      }
+
+      signupSubmitHandler = () =>{
+
+        try {
+          // const { firstName, lastName, age, gender, email, salary, subjectId } = this.state;
+          const { name,email,password,mobile,role,holdername,cardnumber,expdate,cvv } =this.state;
+          const body = {
+            name: name,
+            email: email,
+            password: password,
+            mobile: mobile,
+            role: role,
+            holdername: holdername,
+            cardnumber: cardnumber,
+            expdate: expdate,
+            cvv: cvv
+          };
+          console.log('add user -> body', body);
+          const res = axios.post('http://localhost:4000/api/v1/user/signup', body);
+          let doneObj = { message: res.data.message, type: 'success' };
+          this.setState({ loading: false, doneObj: doneObj });
+        } catch (error) {
+          let doneObj = { message: error.response.data.error, type: 'error' };
+          this.setState({ loading: false, doneObj: doneObj });
+        }
+
       }
 
      
@@ -66,18 +98,18 @@ export default class Registration extends Component {
 
     typeSelectHandler = (value) =>{
 
-      this.setState({UserType:value}, ()=>{
-        if(this.state.UserType==="Passenger") {
+      this.setState({role:value}, ()=>{
+        if(this.state.role==="Passenger") {
             this.setState({isPassenger:true});
             this.setState({isConductor:false});
             this.setState({isDriver:false});
         }
-        else if(this.state.UserType==="Conductor") {
+        else if(this.state.role==="Conductor") {
           this.setState({isPassenger:false});
           this.setState({isConductor:true});
           this.setState({isDriver:false});
         }
-        else if(this.state.UserType==="Driver") {
+        else if(this.state.role==="Driver") {
           this.setState({isPassenger:false});
           this.setState({isConductor:false});
           this.setState({isDriver:true});
@@ -99,37 +131,42 @@ export default class Registration extends Component {
       
             <TextInput
               placeholder="Enter User Name"    
-              onChangeText={UserName => this.setState({UserName})}
+              onChangeText={name => this.setState({name})}
               underlineColorAndroid='transparent'
               style={styles.TextInputStyleClass}
+              value={this.state.name}
             />
 
             <TextInput
-              placeholder="Enter User Mobile Number"
-              onChangeText={userMobile => this.setState({userMobile})}
-              underlineColorAndroid='transparent'
-              style={styles.TextInputStyleClass}
-            />
-     
-            <TextInput
               placeholder="Enter User Email"
-              onChangeText={UserEmail => this.setState({UserEmail})}
+              onChangeText={email => this.setState({email})}
               underlineColorAndroid='transparent'
               style={styles.TextInputStyleClass}
+              value={this.state.email}
             />
-     
+
             <TextInput
               placeholder="Enter User Password"
-              onChangeText={UserPassword => this.setState({UserPassword})}
+              onChangeText={password => this.setState({password})}
               underlineColorAndroid='transparent'
               style={styles.TextInputStyleClass}
               secureTextEntry={true}
+              value={this.state.password}
+            />
+     
+            <TextInput
+              placeholder="Enter User Mobile Number"
+              onChangeText={mobile => this.setState({mobile})}
+              underlineColorAndroid='transparent'
+              style={styles.TextInputStyleClass}
+              value={this.state.mobile}
             />
 
             <Picker
-                selectedValue= {this.state.UserType}
+                selectedValue= {this.state.role}
                 style={styles.TextInputStyleClass}
-                onValueChange={this.typeSelectHandler.bind(this.state.UserType)}
+                value={this.state.role}
+                onValueChange={this.typeSelectHandler.bind(this.state.role)}
                 // onValueChange={()=>(itemValue,itemIndex)=>this.setState({UserType:itemValue})}
             >
                 <Picker.Item label="Passenger" value="Passenger"></Picker.Item>
