@@ -34,11 +34,11 @@ export default class ChooseLocation extends Component {
                     value={this.state.destination}
                 />
                 <Button 
-                    title="Go to CompleteTrip"
+                    title="Select route"
                     onPress={() => this.props.navigation.navigate('SelectRoute',{sourse:this.state.sourse,destination:this.state.destination})}
                 />
                 <Button 
-                    title="cancle"
+                    title="cancel"
                 />
             </View>
         )

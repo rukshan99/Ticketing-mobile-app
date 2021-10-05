@@ -3,9 +3,10 @@ import { Button, View, Text } from 'react-native';
 import NumericInput from 'react-native-numeric-input'
 
 export default class CompleteTrip extends Component {
-    //props.navigation.getParam(paramName, defaultValue) --> getting values from "select route" page
-    state = { noOfPassengers: 1 }
-
+    state = {
+        noOfPassengers: 1,
+        trip: this.props.route.params
+    }
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -13,18 +14,21 @@ export default class CompleteTrip extends Component {
                 <Text>No of passengers: </Text>
                 <NumericInput
                     value={this.state.noOfPassengers}
-                    minValue='1'
-                    maxValue='50'
+                    minValue={1}
+                    maxValue={50}
                     onChange={value => this.setState({ noOfPassengers: value })}
                 />
                 <Button
                     title="Go to ScanQR"
-                    onPress={() => this.props.navigation.navigate('GenerateQR')}
+                    onPress={() => this.props.navigation.navigate('GenerateQR', {
+                        ...this.state.trip,
+                        noOfPassengers: this.state.noOfPassengers
+                    })}
                 />
                 <Button
                     title="Back"
                     color="#ed665c"
-                    onPress={() => this.props.navigation.navigate('')} //go back to select route
+                    onPress={() => this.props.navigation.navigate('')}
                 />
             </View>
         )

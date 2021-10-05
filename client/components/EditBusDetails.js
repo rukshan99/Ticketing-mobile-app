@@ -3,10 +3,7 @@ import { Button, View, TextInput } from 'react-native';
 import { StyleSheet } from 'react-native';
 import axios from 'axios';
 
-
-
 export default class AddBusDetails extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -17,7 +14,6 @@ export default class AddBusDetails extends Component {
             BusNo: ''
         }
     }
-
     submit() {
         const id = this.props.route.params.id;
         axios.put(`http://localhost:4000/api/v1/buses/edit/${id}`, this.state)
@@ -31,7 +27,6 @@ export default class AddBusDetails extends Component {
         console.warn(this.state);
         this.props.navigation.navigate('Notify')
     }
-
     componentDidMount = async () =>{
         const id = this.props.route.params.id;
         try {
@@ -98,12 +93,10 @@ export default class AddBusDetails extends Component {
 }
 
 const styles = StyleSheet.create({
-
     saveBTN: {
         position: 'absolute',
         width: '160px',
         height: '41px',
         top: '500px',
     }
-
 });

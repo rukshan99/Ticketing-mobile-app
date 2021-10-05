@@ -27,7 +27,6 @@ export default class SelectRoute extends Component {
         }
         axios.get('http://localhost:4000/api/v1/buses/routes', { params: { ...body } })
             .then(response => {
-                console.log('routesCollection', response.data);
                 this.setState({ routesCollection: response.data.data });
 
             })
