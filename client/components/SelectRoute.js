@@ -40,15 +40,18 @@ export default class SelectRoute extends Component {
             <Text>Route</Text>
             <Picker
                 selectedValue={this.state.route}
-                style={styles.TextInputStyleClass}
-               
-                onValueChange={() => (itemValue, itemIndex) => this.setState({ route: itemValue })}
+                style={styles.TextInputStyleClass}    
+                onValueChange={(itemValue, itemIndex) => this.setState({ route: itemValue })}
             >
                 {this.state.routesCollection.map((item, key) => (
                     <Picker.Item label={item.route} value={item.route} key={key} />)
                 )}
             </Picker>
-            <Button title="Next"/>
+            <Button 
+                title="Next"
+                onPress={() => this.props.navigation.navigate('BusDetailsForRoute',{sourse:this.state.sourse,destination:this.state.destination,route:this.state.route})}
+                
+            />
             <Button title="Cancel"/>
         </View>
         )

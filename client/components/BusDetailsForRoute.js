@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, CheckBox, Button} from 'react-native';
 import axios from 'axios';
-import { param } from '../../src/routes/bus.routes';
+import RadioButton from './RadioButton';
 
 
 export default  class BusDetailsForRoute extends Component {
 
+    
     constructor(props){
         super(props);
         console.log(props)
@@ -13,39 +14,71 @@ export default  class BusDetailsForRoute extends Component {
             busessCollection: [],
             route:'',
             bus:'',
+            sourse:'',
+            destination:'',
             selectedBus:'',
+            props:[],
             isSelected:false
            
         }
+
+        this.handleChange=this.handleChange.bind(this);
+
 
     }
 
     componentDidMount() {
 
-        axios.get('http://localhost:4000/api/v1/buses/buses')
+        const sourse = this.props.route.params.sourse;
+        const destination = this.props.route.params.destination;
+        const route = this.props.route.params.route;
+        this.setState({
+            sourse: sourse,
+            destination: destination,
+            route: route
+        })
+        const body = {
+            route: route
+        }
+
+        axios.get('http://localhost:4000/api/v1/buses/buses', { params: { ...body } })
         .then(response => {
              console.log('busessCollection',response.data);
         this.setState({ busessCollection: response.data.data });
 
+
         })
+
+        // this.state.busessCollection.map((bus) => {
+        //     this.setState([...{props});
+        // });
+
     }
+
+    handleChange(event) {  
+        var isSelected = event.target.checked;  
+        var item = event.target.value;                             
+           
+        this.setState(prevState => ({ selectedBus: prevState.selectedBus.set(item, isSelected) }));
+        console.log(selectedBus);  
+  }  
 
     render() {
         return (
             <View style={styles.container}>
 
+                <Text>Hello</Text>
+
             {this.state.busessCollection.length > 0 && this.state.busessCollection.map((bus, index) => (
                 
                 <View style={styles.containerview}>
-                        <CheckBox
-                            value={this.state.isSelected}
-                            onValueChange={() => this.setState({ isSelected: true})}
-                            style={styles.checkbox}
-                        />
+                    <RadioButton>
 
-                        <Text> Name: {bus.BusNo}</Text>
-                        <Text>Email: {bus.time}</Text>
-                        <Text>Is CheckBox selected: {this.state.isSelected? "👍" : "👎"}</Text>
+                    </RadioButton>
+
+                    <Text> Name: {bus.BusNo}</Text>
+                    <Text>Email: {bus.time}</Text>
+                    <Text>Is CheckBox selected: {this.state.isSelected? "👍" : "👎"}</Text>
                    
                 </View>     
                    
