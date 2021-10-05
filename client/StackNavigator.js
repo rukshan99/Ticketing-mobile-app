@@ -10,6 +10,7 @@ import UserDetails from "./components/UserDetails";
 import AddBusDetails from "./components/AddBusDetails";
 import UserAccount from './components/UserAccount';
 import SingleTrip from './components/SingleTrip';
+import SelectRoute from './components/SelectRoute';
 import TimeTable from './components/Timetable';
 import editBus from './components/EditBusDetails';
 import busDetails from './components/BusDetails';
@@ -28,7 +29,9 @@ const screenOptionStyle = {
 const TripStackNavigator = () => {
   return (
     <Stack.Navigator  screenOptions={screenOptionStyle}>
+      
       <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
+      <Stack.Screen name="SelectRoute" component={SelectRoute} />
       <Stack.Screen name="CompleteTrip" component={CompleteTrip} />
       <Stack.Screen name="GenerateQR" component={GenerateQR} />
     </Stack.Navigator>
