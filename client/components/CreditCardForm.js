@@ -15,8 +15,6 @@ export default class CreditCard extends Component {
           cvv: ''
      
         }
-
-        this.signupSubmitHandler=this.setPayment.bind(this);
      
       }
   
