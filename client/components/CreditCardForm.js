@@ -72,7 +72,6 @@ export default class CreditCard extends Component {
       );
     }
 }
-export { paymentForm };
 
   export { _creditCard };
 
