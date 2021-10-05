@@ -3,6 +3,8 @@ import { StyleSheet, View, Switch, Button, TextInput} from "react-native";
 
 let _creditCard={};
 // let _creditCard;
+let paymentForm;
+
 export default class CreditCard extends Component {
     constructor(props) {
      
@@ -12,13 +14,18 @@ export default class CreditCard extends Component {
           holdername:'',
           cardnumber: '',
           expdate: '',
-          cvv: '',
-          focus:''
+          cvv: ''
      
         }
+
+        this.signupSubmitHandler=this.setPayment.bind(this);
      
       }
 
+    setPayment = () =>{
+      // const{ holdername , cardnumber, expdate, cvv} = this.state;
+
+    }
      
     // state = { useLiteCreditCardInput: false };
 
@@ -30,14 +37,14 @@ export default class CreditCard extends Component {
       return (
 
         <View>
-            <TextInput
-                
+            <TextInput  
                 style={styles.TextInputStyleClass}
                 placeholder="Cardholder Name"
                 onChangeText={holdername => {
                   this.setState({holdername})
                   _creditCard = {..._creditCard, holdername}
                 }}
+                value={this.state.holdername}
             />
             <TextInput
                 style={styles.TextInputStyleClass}
@@ -46,6 +53,7 @@ export default class CreditCard extends Component {
                   this.setState({cardnumber})
                   _creditCard = {..._creditCard, cardnumber}
                 }}
+                value={this.state.cardnumber}
             />
       <View style={styles.row}>
             <TextInput
@@ -60,6 +68,7 @@ export default class CreditCard extends Component {
               this.setState({expdate})
               _creditCard = {..._creditCard, expdate}
             }}
+            value={this.state.expdate}
             // onChangeText={expdate => this.setState({expdate})}
             />
             <TextInput
@@ -70,13 +79,15 @@ export default class CreditCard extends Component {
               _creditCard = {..._creditCard, cvv}
             }}
             // onChangeText={cvv => this.setState({cvv})}
+            value={this.state.cvv}
             />
       </View>
      
-      </View>
+  </View>
       );
     }
 }
+export { paymentForm };
 
   // exports._creditCard = _creditCard;
   export { _creditCard };

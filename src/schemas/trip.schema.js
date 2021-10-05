@@ -8,7 +8,9 @@ const tripSchema = new Schema({
     route: { type: String, required: [true, 'Route is required'] },
     bus: { type: Object, required: [true, 'Bus details are required'] },
     noOfPassengers: { type: Number, required: [true, 'Route is required'] },
+    fare: { type: Number, required: [true, 'Fare is required'] },
     passengerId: { type: Schema.ObjectId, required: [true, 'PassengerId is required'] },
 })
+
 
 module.exports =  mongoose.model('Trip', tripSchema);

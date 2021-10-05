@@ -1,86 +1,61 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Button, View, Text, StyleSheet, TextInput } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
-import BusDetailsForRoute from './BusDetailsForRoute';
 
 
-export default  class SelectRoute extends Component {
+export default class Ex extends Component {
 
-    constructor(props){
-        super(props);
-        console.log(props)
-        this.state = {
-            sourse:'',
-            destination:'',
-            routesCollection: [],
-            route:'',
-            isRouteSelected:false
-        }
-
-        // this.routeSelectHandler=this.routeSelectHandler.bind(this);
-
+    state = {
+        sourse: '',
+        destination: '',
+        routesCollection: [],
+        route: '',
+        isRouteSelected: false
     }
 
     componentDidMount() {
-
-        const sourse  = this.props.route.params.sourse;
-        const destination  = this.props.route.params.destination;
-        console.log(sourse)
-
+        const sourse = this.props.route.params.sourse;
+        const destination = this.props.route.params.destination;
         this.setState({
-            sourse : sourse,
-            destination : destination
+            sourse: sourse,
+            destination: destination
         })
-
         const body = {
-            sourse : sourse,
-            destination : destination
+            sourse: sourse,
+            destination: destination
         }
+        axios.get('http://localhost:4000/api/v1/buses/routes', { params: { ...body } })
+            .then(response => {
+                console.log('routesCollection', response.data);
+                this.setState({ routesCollection: response.data.data });
 
-        axios.get('http://localhost:4000/api/v1/buses/routes', {params: {...body}} )
-        .then(response => {
-             console.log('routesCollection',response.data);
-        this.setState({ routesCollection: response.data.data });
-
-        })
+            })
     }
-    // onClickHandler = () =>{
-        
-    //     this.setState({isRouteSelected:true});
-        
-    // }
+    
+    // navigateDocumentPage(e, sourse) {
+    //     window.location ='/SelectRoute'
+    //   }
     render() {
-       
         return (
             <View style={styles.container}>
-               
-                <Text>Route</Text>
-
-                <Picker
-                    selectedValue= {this.state.route}
-                    style={styles.TextInputStyleClass}
-                    // onValueChange={this.routeSelectHandler.bind(this.state.route)}
-                    onValueChange={()=>(itemValue,itemIndex)=>this.setState({route:itemValue})}
-                >
-                    {this.state.routesCollection.map((item, key)=>(
+            <Text>Route</Text>
+            <Picker
+                selectedValue={this.state.route}
+                style={styles.TextInputStyleClass}
+                // onValueChange={this.routeSelectHandler.bind(this.state.route)}
+                onValueChange={() => (itemValue, itemIndex) => this.setState({ route: itemValue })}
+            >
+                {this.state.routesCollection.map((item, key) => (
                     <Picker.Item label={item.route} value={item.route} key={key} />)
-                    )}
-                </Picker>
-{/* 
-                <Button title="next" onPress={this.onClickHandler} color="#2196F3" />
-                <Button title="cancle" color="#2196F3" />
-
-                {this.state.isRouteSelected &&(<BusDetailsForRoute route={this.state.route}/>)} */}
-
-                {/* {this.state.isRouteSelected &&(<BusDetailsForRoute/>)} */}
-                
-
-            </View>
-        );
+                )}
+            </Picker>
+            <Button title="Next"/>
+            <Button title="Cancel"/>
+        </View>
+        )
     }
 }
-
 const styles = StyleSheet.create({
  
     container :{
@@ -88,6 +63,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex:1,
     margin: 10
+    },
+
+    row: {
+        flex: 1,
+        flexDirection: 'row',
+        marginBottom: 36,
+      },
+
+    btn:{
+        flexDirection: 'row', 
+        height: 50, 
+        backgroundColor: 'yellow',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 50,
+        elevation:3,
+     
     },
      
     TextInputStyleClass: {

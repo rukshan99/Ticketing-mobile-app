@@ -29,6 +29,7 @@ export default class Registration extends Component {
      
         }
         this.typeSelectHandler=this.typeSelectHandler.bind(this);
+        this.signupSubmitHandler=this.signupSubmitHandler.bind(this);
      
       }
 
@@ -125,7 +126,7 @@ export default class Registration extends Component {
               style={styles.TextInputStyleClass}
               value={this.state.name}
             />
-     
+
             <TextInput
               placeholder="Enter User Email"
               onChangeText={email => this.setState({email})}
@@ -133,7 +134,7 @@ export default class Registration extends Component {
               style={styles.TextInputStyleClass}
               value={this.state.email}
             />
-     
+
             <TextInput
               placeholder="Enter User Password"
               onChangeText={password => this.setState({password})}
@@ -142,7 +143,7 @@ export default class Registration extends Component {
               secureTextEntry={true}
               value={this.state.password}
             />
-
+     
             <TextInput
               placeholder="Enter User Mobile Number"
               onChangeText={mobile => this.setState({mobile})}
@@ -154,6 +155,7 @@ export default class Registration extends Component {
             <Picker
                 selectedValue= {this.state.role}
                 style={styles.TextInputStyleClass}
+                value={this.state.role}
                 onValueChange={this.typeSelectHandler.bind(this.state.role)}
                 // onValueChange={()=>(itemValue,itemIndex)=>this.setState({UserType:itemValue})}
             >

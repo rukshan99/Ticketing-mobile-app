@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.0",
-    "@react-native-community/checkbox": "^0.5.8",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "^1.16.1",
     "@react-navigation/bottom-tabs": "^6.0.7",
@@ -24,6 +23,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "^7.17.0",
+    "react-icons": "^4.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-camera": "^4.2.1",
     "react-native-dropdown-picker": "^5.1.28",
@@ -39,7 +39,8 @@
     "react-native-screens": "^3.8.0",
     "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^4.6.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-table": "^7.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
