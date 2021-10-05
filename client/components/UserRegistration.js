@@ -50,7 +50,6 @@ export default class Registration extends Component {
 
           }
 
-          // const { firstName, lastName, age, gender, email, salary, subjectId } = this.state;
           const { name,email,password,mobile,role,holdername,cardnumber,expdate,cvv } =this.state;
         
           const body = {
@@ -105,9 +104,7 @@ export default class Registration extends Component {
           this.setState({isInspector:true});
         }
       })
-      // console.log(value);
-      // console.log(this.state.UserType);
-      // setType(value);
+
       
     }
      
@@ -157,7 +154,6 @@ export default class Registration extends Component {
                 style={styles.TextInputStyleClass}
                 value={this.state.role}
                 onValueChange={this.typeSelectHandler.bind(this.state.role)}
-                // onValueChange={()=>(itemValue,itemIndex)=>this.setState({UserType:itemValue})}
             >
                 <Picker.Item label="Passenger" value="Passenger"></Picker.Item>
                 <Picker.Item label="Conductor" value="Conductor"></Picker.Item>
@@ -185,20 +181,13 @@ export default class Registration extends Component {
         margin: 10
         },
          
-        TextInputStyleClass: {
-         
-        // textAlign: 'center',
+        TextInputStyleClass: { 
         marginBottom: 7,
         height: 40,
         borderWidth: 1,
-        // Set border Hex Color Code Here.
-         borderColor: '#2196F3',
-         
-         // Set border Radius.
-         borderRadius: 5 ,
-         
-        // Set border Radius.
-         //borderRadius: 10 ,
+        borderColor: '#2196F3',
+        borderRadius: 5 ,
+
         }
          
-        });
+});

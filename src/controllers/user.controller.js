@@ -112,7 +112,7 @@ const findAllConductors = (req, res) => {
       if (!data)
         res.status(404).send({ message: "Not found Driver " });
       else res.send({ data: data });
-      // console.log(data);
+
     })
     .catch(err => {
       res
@@ -129,7 +129,6 @@ const findAllInspectors = (req, res) => {
       if (!data)
         res.status(404).send({ message: "Not found Driver " });
       else res.send({ data: data });
-      // console.log(data);
     })
     .catch(err => {
       res

@@ -49,8 +49,6 @@ exports.getRoutesForStations = async (req, res, next) => {
 
 exports.getBusesForRoute = async (req, res, next) => {
 
-    // const route =req.query.route;
-
     Bus.find({ route: 'Negambo 255' })
         .then(data => {
             if (!data)

@@ -15,9 +15,6 @@ export default class ChooseLocation extends Component {
         }
     }
 
-    // navigateDocumentPage(e, sourse) {
-    //     window.location ='/SelectRoute'
-    //   }
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -38,7 +35,6 @@ export default class ChooseLocation extends Component {
                 />
                 <Button 
                     title="Go to CompleteTrip"
-                    // onClick={e => this.navigateDocumentPage(e, this.state.sourse)}
                     onPress={() => this.props.navigation.navigate('SelectRoute',{sourse:this.state.sourse,destination:this.state.destination})}
                 />
                 <Button 
@@ -75,19 +71,12 @@ const styles = StyleSheet.create({
     },
      
     TextInputStyleClass: {
-     
-    // textAlign: 'center',
-    marginBottom: 7,
-    height: 40,
-    borderWidth: 1,
-    // Set border Hex Color Code Here.
-     borderColor: '#2196F3',
-     
-     // Set border Radius.
-     borderRadius: 5 ,
-     
-    // Set border Radius.
-     //borderRadius: 10 ,
+    
+        marginBottom: 7,
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#2196F3',
+        borderRadius: 5 ,
     }
      
     });

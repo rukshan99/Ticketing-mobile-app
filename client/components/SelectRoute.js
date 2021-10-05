@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 
-export default class Ex extends Component {
+export default class SelectRoute extends Component {
 
     state = {
         sourse: '',
@@ -33,9 +33,7 @@ export default class Ex extends Component {
             })
     }
     
-    // navigateDocumentPage(e, sourse) {
-    //     window.location ='/SelectRoute'
-    //   }
+  
     render() {
         return (
             <View style={styles.container}>
@@ -43,7 +41,7 @@ export default class Ex extends Component {
             <Picker
                 selectedValue={this.state.route}
                 style={styles.TextInputStyleClass}
-                // onValueChange={this.routeSelectHandler.bind(this.state.route)}
+               
                 onValueChange={() => (itemValue, itemIndex) => this.setState({ route: itemValue })}
             >
                 {this.state.routesCollection.map((item, key) => (
@@ -84,18 +82,11 @@ const styles = StyleSheet.create({
      
     TextInputStyleClass: {
      
-    // textAlign: 'center',
     marginBottom: 7,
     height: 40,
     borderWidth: 1,
-    // Set border Hex Color Code Here.
-     borderColor: '#2196F3',
-     
-     // Set border Radius.
-     borderRadius: 5 ,
-     
-    // Set border Radius.
-     //borderRadius: 10 ,
+    borderColor: '#2196F3', 
+    borderRadius: 5 ,
     }
      
     });

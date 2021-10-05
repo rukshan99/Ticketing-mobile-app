@@ -22,13 +22,6 @@ export default  class BusDetailsForRoute extends Component {
 
     componentDidMount() {
 
-        // console.log(this.props)
-        // const route = this.props.route;
-
-        // this.setState({route:route});
-
-        // const body = {route: route};
-
         axios.get('http://localhost:4000/api/v1/buses/buses')
         .then(response => {
              console.log('busessCollection',response.data);
@@ -89,18 +82,11 @@ const styles = StyleSheet.create({
      
     TextInputStyleClass: {
      
-    // textAlign: 'center',
     marginBottom: 7,
     height: 40,
     borderWidth: 1,
-    // Set border Hex Color Code Here.
-     borderColor: '#2196F3',
-     
-     // Set border Radius.
-     borderRadius: 5 ,
-     
-    // Set border Radius.
-     //borderRadius: 10 ,
+    borderColor: '#2196F3',
+    borderRadius: 5 ,
     }
      
     });

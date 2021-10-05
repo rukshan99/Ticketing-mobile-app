@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Switch, Button, TextInput} from "react-native";
+import { StyleSheet, View, TextInput} from "react-native";
 
 let _creditCard={};
-// let _creditCard;
-let paymentForm;
 
 export default class CreditCard extends Component {
     constructor(props) {
@@ -21,17 +19,6 @@ export default class CreditCard extends Component {
         this.signupSubmitHandler=this.setPayment.bind(this);
      
       }
-
-    setPayment = () =>{
-      // const{ holdername , cardnumber, expdate, cvv} = this.state;
-
-    }
-     
-    // state = { useLiteCreditCardInput: false };
-
-    // _onChange = (formData) => console.log(JSON.stringify(formData, null, " "));
-    // _onFocus = (field) => console.log("focusing", field);
-    // _setUseLiteCreditCardInput = (useLiteCreditCardInput) => this.setState({ useLiteCreditCardInput });
   
     render() {
       return (
@@ -69,7 +56,6 @@ export default class CreditCard extends Component {
               _creditCard = {..._creditCard, expdate}
             }}
             value={this.state.expdate}
-            // onChangeText={expdate => this.setState({expdate})}
             />
             <TextInput
             style={styles.TextInputStyleClass}
@@ -78,7 +64,6 @@ export default class CreditCard extends Component {
               this.setState({cvv})
               _creditCard = {..._creditCard, cvv}
             }}
-            // onChangeText={cvv => this.setState({cvv})}
             value={this.state.cvv}
             />
       </View>
@@ -89,7 +74,6 @@ export default class CreditCard extends Component {
 }
 export { paymentForm };
 
-  // exports._creditCard = _creditCard;
   export { _creditCard };
 
 
@@ -106,25 +90,17 @@ export { paymentForm };
               flexDirection: 'row',
               marginBottom: 36,
             },
-    // textField: {
-    //           flex: 1,
-    //           marginTop: 24,
-    //         },
+    
      
     TextInputStyleClass: {
      
-    // textAlign: 'center',
     marginBottom: 7,
     height: 40,
     borderWidth: 1,
-    // Set border Hex Color Code Here.
-     borderColor: '#2196F3',
+    borderColor: '#2196F3', 
+    borderRadius: 5 ,
      
-     // Set border Radius.
-     borderRadius: 5 ,
-     
-    // Set border Radius.
-     //borderRadius: 10 ,
+  
     }
      
     });
