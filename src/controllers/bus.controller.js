@@ -38,7 +38,6 @@ exports.getRoutesForStations = async (req, res, next) => {
             if (!data)
                 res.status(404).send({ message: "Not found Bus with given stations" });
             else res.send({ data: data });
-            console.log(data);
         })
         .catch(err => {
             res
@@ -50,7 +49,6 @@ exports.getRoutesForStations = async (req, res, next) => {
 exports.getBusesForRoute = async (req, res, next) => {
 
     const route = req.query.route;
-
     Bus.find({ route: route })
         .then(data => {
             if (!data)
@@ -111,7 +109,6 @@ exports.getBus = async (req, res) => {
 }
 
 exports.updateBus = async (req, res) => {
-    console.log(req.body)
     if (!req.body) {
         return res.status(400).send({
             message: "Data to update can not be empty!"

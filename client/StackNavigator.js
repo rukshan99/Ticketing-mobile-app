@@ -44,6 +44,7 @@ const ScanQRStackNavigator = () => {
   return (
     <Stack.Navigator  screenOptions={screenOptionStyle}>
       <Stack.Screen name="ScanQR" component={ScanQR} />
+      <Stack.Screen name="User Details" component={UserDetails} />
     </Stack.Navigator>
   );
 }

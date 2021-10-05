@@ -1,71 +1,64 @@
-import React, { Component } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-export default class RadioButton extends Component {
-	state = {
-		value: null,
-	};
+export default function RadioButton({ isChecked, text, onRadioButtonPress }) {
+  const _renderCheckedView = () => {
+    return isChecked ? (
+      <View style={[styles.radioButtonIconInnerIcon]} />
+    ) : null;
+  };
 
-	render() {
-		const { PROP } = this.props;
-		const { value } = this.state;
-
-		return (
-			<View>
-				{PROP.map(res => {
-					return (
-						<View key={res.key} style={styles.container}>
-							<Text style={styles.radioText}>{res.text}</Text>
-							<TouchableOpacity
-								style={styles.radioCircle}
-								onPress={() => {
-									this.setState({
-										value: res.key,
-									});
-								}}>
-                                  {value === res.key && <View style={styles.selectedRb} />}
-							</TouchableOpacity>
-						</View>
-					);
-				})}
-                <Text> Selected: {this.state.value} </Text>
-			</View>
-		);
-	}
+  return (
+    <TouchableOpacity style={styles.mainContainer} onPress={onRadioButtonPress}>
+      <View style={[styles.radioButtonIcon]}>{_renderCheckedView()}</View>
+      <View style={[styles.radioButtonTextContainer]}>
+        <Text style={styles.radioButtonText}>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: {
-        marginBottom: 35,
-        alignItems: 'center',
-        flexDirection: 'row',
-		justifyContent: 'space-between',
-	},
-    radioText: {
-        marginRight: 35,
-        fontSize: 20,
-        color: '#000',
-        fontWeight: '700'
-    },
-	radioCircle: {
-		height: 30,
-		width: 30,
-		borderRadius: 100,
-		borderWidth: 2,
-		borderColor: '#3740ff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	selectedRb: {
-		width: 15,
-		height: 15,
-		borderRadius: 50,
-		backgroundColor: '#3740ff',
-    },
-    result: {
-        marginTop: 20,
-        color: 'white',
-        fontWeight: '600',
-        backgroundColor: '#F3FBFE',
-    },
+  mainContainer: {
+    height: 50,
+    marginTop: 5,
+    marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    justifyContent: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderWidth: 0.5,
+    borderColor: "red",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  radioButtonIcon: {
+    backgroundColor: "white",
+    borderWidth: 3,
+    borderColor: "red",
+    height: 30,
+    width: 30,
+    borderRadius: 30 / 2,
+    marginRight: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  radioButtonIconInnerIcon: {
+    height: 25,
+    width: 25,
+    backgroundColor: "red",
+    borderRadius: 25 / 2,
+    borderWidth: 3,
+    borderColor: "white",
+  },
+  radioButtonTextContainer: {
+    flex: 5,
+    height: 50,
+    justifyContent: "center",
+    paddingLeft: 10,
+  },
+  radioButtonText: {
+    fontSize: 18,
+  },
 });
