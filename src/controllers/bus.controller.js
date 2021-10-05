@@ -49,7 +49,9 @@ exports.getRoutesForStations = async (req, res, next) => {
 
 exports.getBusesForRoute = async (req, res, next) => {
 
-    Bus.find({ route: 'Negambo 255' })
+    const route = req.query.route;
+
+    Bus.find({ route: route })
         .then(data => {
             if (!data)
                 res.status(404).send({ message: "Not found Bus with given route " });

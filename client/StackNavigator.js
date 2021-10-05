@@ -15,6 +15,7 @@ import TimeTable from './components/Timetable';
 import editBus from './components/EditBusDetails';
 import busDetails from './components/BusDetails';
 import notify from './components/Notify';
+import BusDetailsForRoute from './components/BusDetailsForRoute';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ const TripStackNavigator = () => {
       
       <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
       <Stack.Screen name="SelectRoute" component={SelectRoute} />
+      <Stack.Screen name="BusDetailsForRoute" component={BusDetailsForRoute} />
       <Stack.Screen name="CompleteTrip" component={CompleteTrip} />
       <Stack.Screen name="GenerateQR" component={GenerateQR} />
     </Stack.Navigator>
