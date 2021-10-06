@@ -114,7 +114,7 @@ export default class Registration extends Component {
      
         <View style={styles.container}>
      
-            <Text style= {{ fontSize: 20, color: "#000", textAlign: 'center', marginBottom: 15 }}>User Registration Form</Text>
+            <Text style= {{ fontSize: 30, color: "#000", textAlign: 'center', marginBottom: 45 }}>User Registration Form</Text>
       
             <TextInput
               placeholder="Enter User Name"    
@@ -163,9 +163,9 @@ export default class Registration extends Component {
             </Picker>
 
             {this.state.isPassenger &&(<CreditCard />)}
-            
+            <View style={{width:250,left:65}}>
             <Button title="Click Here To Register" onPress={this.signupSubmitHandler} color="#2196F3" />
-
+            </View>
         </View>
                 
         );

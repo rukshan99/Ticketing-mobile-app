@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import RadioButtonContainer from './RadioButtonContainer';
 
+
 export default class BusDetailsForRoute extends Component {
     constructor(props) {
         super(props);
@@ -56,6 +57,8 @@ export default class BusDetailsForRoute extends Component {
             <View style={styles.container}>
                 <View style={styles.containerview}>
                     <RadioButtonContainer values={this.state.props} onPress={this.onRadioButtonPress} />
+                    <br/>
+                    <br/>
                     <Button
                         title="Proceed to Payment"
                         onPress={() => this.props.navigation.navigate('CompleteTrip', {

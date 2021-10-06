@@ -126,7 +126,12 @@ const BusList = (props) => {
             borderWidth: 1,
             borderColor: '#2196F3',
             borderRadius: 5 
-        }
+        },
+
+        row: {
+          flexDirection: 'row',
+          marginBottom: 36,
+        },
          
         });
     return (
@@ -242,19 +247,30 @@ const BusList = (props) => {
                 </Picker>
                 
                 <br/>
-                <Button title="Notify"
-                        onPress={() => this.submit()}
+                <View style={styles.row}>
+                <View style={{left: 45, width: 130}}>
+                <Button 
+                    title="Notify"
                 />
-                <br/>
-                 <Button title="Cancel" color="red"
+                </View>
+                <View style={{left:100, width: 130}}>
+                <Button 
+                    title="cancel"
+                    color="#ed665c"
                 />
+                </View>
+                </View>
 
             </View>
       </React.Fragment>
     );
 
     
+    
   };
+
+
+  
 
   
   export default BusList;

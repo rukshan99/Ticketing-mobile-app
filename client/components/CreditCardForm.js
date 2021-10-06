@@ -50,6 +50,7 @@ export default class CreditCard extends Component {
             }}
             value={this.state.expdate}
           />
+          <View style={{left: 46}}>
           <TextInput
             style={styles.TextInputStyleClass}
             placeholder="Security Code"
@@ -59,6 +60,7 @@ export default class CreditCard extends Component {
             }}
             value={this.state.cvv}
           />
+          </View>
         </View>
 
       </View>
