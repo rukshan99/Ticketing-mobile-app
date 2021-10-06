@@ -10,10 +10,12 @@ import UserDetails from "./components/UserDetails";
 import AddBusDetails from "./components/AddBusDetails";
 import UserAccount from './components/UserAccount';
 import SingleTrip from './components/SingleTrip';
+import SelectRoute from './components/SelectRoute';
 import TimeTable from './components/Timetable';
 import editBus from './components/EditBusDetails';
 import busDetails from './components/BusDetails';
 import notify from './components/Notify';
+import BusDetailsForRoute from './components/BusDetailsForRoute';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +30,10 @@ const screenOptionStyle = {
 const TripStackNavigator = () => {
   return (
     <Stack.Navigator  screenOptions={screenOptionStyle}>
+      
       <Stack.Screen name="ChooseLocation" component={ChooseLocation} />
+      <Stack.Screen name="SelectRoute" component={SelectRoute} />
+      <Stack.Screen name="BusDetailsForRoute" component={BusDetailsForRoute} />
       <Stack.Screen name="CompleteTrip" component={CompleteTrip} />
       <Stack.Screen name="GenerateQR" component={GenerateQR} />
     </Stack.Navigator>
@@ -39,6 +44,7 @@ const ScanQRStackNavigator = () => {
   return (
     <Stack.Navigator  screenOptions={screenOptionStyle}>
       <Stack.Screen name="ScanQR" component={ScanQR} />
+      <Stack.Screen name="User Details" component={UserDetails} />
     </Stack.Navigator>
   );
 }
