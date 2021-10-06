@@ -31,7 +31,6 @@ export default class CompleteTrip extends Component {
       }
     }, () => {
       this.calculateFare();
-      this.generateQRCodeData();
     });
   }
 
@@ -49,6 +48,7 @@ export default class CompleteTrip extends Component {
     axios.post('http://localhost:4000/api/v1/trips/', data).then((res) => {
       this.setState({ isLoading: false });
       this.setState({ isPaid: true });
+      console.log(this.state.data);
     }).catch((error) => {
       console.error(error);
     });
@@ -58,7 +58,9 @@ export default class CompleteTrip extends Component {
     const _commonFareForOneStation = 10; // --> an assumption
     const noOfStationsInBetween = Math.abs(this.state.stations.findIndex((station) => station === this.state.source) -
       this.state.stations.findIndex((station) => station === this.state.destination));
-    this.setState({ fare: noOfStationsInBetween * _commonFareForOneStation * this.state.noOfPassengers });
+    this.setState({ fare: noOfStationsInBetween * _commonFareForOneStation * this.state.noOfPassengers },
+      () => { this.generateQRCodeData() }
+      );
   }
 
   generateQRCodeData = () => {
@@ -78,10 +80,10 @@ export default class CompleteTrip extends Component {
     return (
       <View style={styles.container}>
         <Text>
-          Source:{this.state.source + '\n'}
-          Destination:{this.state.destination + '\n'}
-          No of passengers:{this.state.noOfPassengers + '\n'}
-          Fare:{this.state.fare + '\n'}
+          Source:{' ' + this.state.source + '\n'}
+          Destination:{' ' + this.state.destination + '\n'}
+          No of passengers:{' ' + this.state.noOfPassengers + '\n'}
+          Fare:{' RS: ' + this.state.fare + '/=\n'}
         </Text>
         <View style={{ flexDirection: 'row' }}>
           <Button

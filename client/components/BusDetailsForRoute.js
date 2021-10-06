@@ -34,7 +34,6 @@ export default class BusDetailsForRoute extends Component {
         }
         axios.get('http://localhost:4000/api/v1/buses/buses', { params: { ...body } })
             .then(response => {
-                console.log('busessCollection', response.data);
                 this.setState({ busessCollection: response.data.data }, () => {
                     this.state.busessCollection.map((bus) => {
                         this.setState({
