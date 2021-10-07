@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, TextInput } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { Button, View, TextInput, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
 export default class AddBusDetails extends Component {
@@ -8,6 +7,7 @@ export default class AddBusDetails extends Component {
     constructor() {
         super();
         this.state = {
+            isLoading: false,
             busID: '',
             date: '',
             time: '',
@@ -18,14 +18,16 @@ export default class AddBusDetails extends Component {
     }
 
     submit() {
+        this.setState({ isLoading: true });
         axios.post('http://localhost:4000/api/v1/buses/', this.state)
             .then(response => {
-                alert('Bus successfully inserted')
+             this.setState({ isLoading: false });
             })
             .catch(error => {
                 console.log(error.message);
                 alert('Data cannot be empty..! ' + error.message)
             })
+
         console.warn(this.state);
     }
 
@@ -63,24 +65,17 @@ export default class AddBusDetails extends Component {
                     style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50 }}
                 />
 
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 100, left: 150 }}>
                     <Button title="Save"
                         onPress={() => this.submit()}
                     />
                 </View>
+                {this.state.isLoading && (
+                            <ActivityIndicator size="large" />
+                          )}
 
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({
-
-    saveBTN: {
-        position: 'absolute',
-        width: '160px',
-        height: '41px',
-        top: '500px',
-    }
-
-});
