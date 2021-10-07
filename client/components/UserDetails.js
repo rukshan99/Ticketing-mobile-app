@@ -3,8 +3,7 @@ import { Button, View, Text, TextInput } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 
-export default class UserDetails extends React.Component {
-
+export default class UserDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,15 +17,13 @@ export default class UserDetails extends React.Component {
   }
 
   componentDidMount() {
-
     this.setState({
-      passengerID: this.props.route.params.passengerID,
-      ticketID: this.props.route.params.ticketID,
-      source: this.props.route.params.source,
-      destination: this.props.route.params.destination,
-      noOfPassengers: this.props.route.params.noOfPassengers,
-      fare: this.props.route.params.fare
-
+      passengerID: this.props.route.params.data.passengerId,
+      ticketID: this.props.route.params.data.ticketId,
+      source: this.props.route.params.data.source,
+      destination: this.props.route.params.data.destination,
+      noOfPassengers: this.props.route.params.data.noOfPassengers,
+      fare: this.props.route.params.data.fare
     })
   }
 
@@ -42,9 +39,6 @@ export default class UserDetails extends React.Component {
     console.warn(this.state);
   }
 
-
-
-
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -53,32 +47,32 @@ export default class UserDetails extends React.Component {
         <View style={styles.details}>
           <Text>Pesssenger ID </Text>
           <TextInput
-            value={this.state.passengerID}
+            defaultValue={' ' + this.state.passengerID}
             style={{ borderWidth: 1, borderColor: 'black', margin: 5, height: 30 }}
           />
           <Text>Ticket ID</Text>
           <TextInput
-            value={this.state.ticketID}
+            defaultValue={' ' + this.state.ticketID}
             style={{ borderWidth: 1, borderColor: 'black', margin: 5, height: 30 }}
           />
           <Text>Source</Text>
           <TextInput
-            value={this.state.source}
+            defaultValue={' ' + this.state.source}
             style={{ borderWidth: 1, borderColor: 'black', margin: 5, height: 30 }}
           />
           <Text>Destination</Text>
           <TextInput
-            value={this.state.destination}
+            defaultValue={' ' + this.state.destination}
             style={{ borderWidth: 1, borderColor: 'black', margin: 5, height: 30 }}
           />
           <Text>No of Passengers</Text>
           <TextInput
-            value={this.state.noOfPassengers}
+            defaultValue={' ' + this.state.noOfPassengers}
             style={{ borderWidth: 1, borderColor: 'black', margin: 5, height: 30 }}
           />
           <Text>Fare</Text>
           <TextInput
-            value={this.state.fare}
+            defaultValue={' RS: ' + this.state.fare}
             style={{ borderWidth: 1, borderColor: 'black', margin: 5, height: 30 }}
           />
         </View>
@@ -100,7 +94,6 @@ const styles = StyleSheet.create({
     height: 35,
     left: 96,
     top: 25,
-    fontFamily: 'Roboto',
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: 24,

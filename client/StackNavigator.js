@@ -56,13 +56,6 @@ const UserRegistrationStackNavigator = () => {
     </Stack.Navigator>
   );
 }
-const UserDetailsNavigator = () => {
-  return (
-    <Stack.Navigator  screenOptions={screenOptionStyle}>
-      <Stack.Screen name="User Details" component={UserDetails} />
-    </Stack.Navigator>
-  );
-}
 
 const UserAccStackNavigator = () => {
   return (
@@ -102,7 +95,6 @@ const bDetailsNavigator = () => {
 export { TripStackNavigator, 
   ScanQRStackNavigator, 
   UserAccStackNavigator, 
-  UserDetailsNavigator, 
   BusDetailsNavigator, 
   UserRegistrationStackNavigator,
   TimetableNavigator,

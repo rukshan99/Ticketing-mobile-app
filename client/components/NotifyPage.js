@@ -9,7 +9,6 @@ export default class NotifyPage extends Component {
         super(props);
         console.log(props)
         this.state = {
-            
             driversCollection: [],
             conductorCollection: [],
             inspectorCollection: [],
@@ -17,7 +16,6 @@ export default class NotifyPage extends Component {
             conductor:'',
             inspector:''
         }
-
     }
 
     componentDidMount() {
