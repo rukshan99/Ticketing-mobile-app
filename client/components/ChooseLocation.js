@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, View, Text, StyleSheet, TextInput } from 'react-native';
+import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
+import busImage from '../assets/splash.png'
 
 export default class ChooseLocation extends Component {
 
@@ -18,6 +19,9 @@ export default class ChooseLocation extends Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+                <Image source={busImage} style={{ width: 305, height: 159, bottom: 25 }} /> 
+
                 <TextInput
                     placeholder="Enter Sourse"
                     onChangeText={sourse => this.setState({sourse})}
@@ -33,13 +37,20 @@ export default class ChooseLocation extends Component {
                     style={styles.TextInputStyleClass}
                     value={this.state.destination}
                 />
+                <View style={styles.row}>
+                <View style={{right: 21, width: 130}}>
                 <Button 
                     title="Select route"
                     onPress={() => this.props.navigation.navigate('SelectRoute',{sourse:this.state.sourse,destination:this.state.destination})}
                 />
+                </View>
+                <View style={{left:17, width: 130}}>
                 <Button 
                     title="cancel"
+                    color="#ed665c"
                 />
+                </View>
+                </View>
             </View>
         )
     }
@@ -54,29 +65,19 @@ const styles = StyleSheet.create({
     },
 
     row: {
-        flex: 1,
         flexDirection: 'row',
         marginBottom: 36,
       },
 
-    btn:{
-        flexDirection: 'row', 
-        height: 50, 
-        backgroundColor: 'yellow',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-        elevation:3,
-     
-    },
-     
     TextInputStyleClass: {
     
-        marginBottom: 7,
+        marginBottom: 15,
         height: 40,
         borderWidth: 1,
         borderColor: '#2196F3',
         borderRadius: 5 ,
+        margin: 5,
+        width: 300
     }
      
     });

@@ -35,8 +35,10 @@ export default class SelectRoute extends Component {
   
     render() {
         return (
-            <View style={styles.container}>
-            <Text>Route</Text>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+
+            <Text style={{fontSize: 20}}>Select Route</Text>
             <Picker
                 selectedValue={this.state.route}
                 style={styles.TextInputStyleClass}    
@@ -46,12 +48,18 @@ export default class SelectRoute extends Component {
                     <Picker.Item label={item.route} value={item.route} key={key} />)
                 )}
             </Picker>
+            <View style={styles.row}>
+            <View style={{right: 25,width: 120}}>    
             <Button 
                 title="Next"
                 onPress={() => this.props.navigation.navigate('BusDetailsForRoute',{sourse:this.state.sourse,destination:this.state.destination,route:this.state.route})}
                 
             />
-            <Button title="Cancel"/>
+            </View>
+            <View style={{left: 23 ,width: 120}}>
+            <Button title="Cancel" color="#ed665c"/>
+            </View>
+            </View>
         </View>
         )
     }
@@ -66,9 +74,10 @@ const styles = StyleSheet.create({
     },
 
     row: {
-        flex: 1,
         flexDirection: 'row',
         marginBottom: 36,
+        margin: 15
+
       },
 
     btn:{
@@ -89,6 +98,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#2196F3', 
     borderRadius: 5 ,
+    width: 290
     }
      
     });

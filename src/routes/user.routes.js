@@ -7,7 +7,6 @@ router.post('/signup', [], registerUser);
 router.get('/allDrivers', [], findAllDriver);
 router.get('/allConductors', [], findAllConductors);
 router.get('/allInspectors', [], findAllInspectors);
-router.post('/signup', [], registerUser);
 router.post('/signin', [], authentication);
 
 module.exports = router;
