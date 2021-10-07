@@ -54,7 +54,6 @@ exports.getBusesForRoute = async (req, res, next) => {
             if (!data)
                 res.status(404).send({ message: "Not found Bus with given route " });
             else res.send({ data: data });
-            console.log(data);
         })
         .catch(err => {
             res

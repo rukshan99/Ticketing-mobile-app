@@ -48,7 +48,6 @@ export default class CompleteTrip extends Component {
     axios.post('http://localhost:4000/api/v1/trips/', data).then((res) => {
       this.setState({ isLoading: false });
       this.setState({ isPaid: true });
-      console.log(this.state.data);
     }).catch((error) => {
       console.error(error);
     });
