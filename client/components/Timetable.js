@@ -28,7 +28,7 @@ const BusList = (props) => {
   
     const retrieveTrips = async() => {
         try {
-			const res = await axios.get(`http://localhost:4000/api/v1/buses/`);
+			const res = await axios.get(`https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/`);
             console.log(res.data.data)
             setTrips(res.data.data);
 		
@@ -49,7 +49,7 @@ const BusList = (props) => {
       }
       else{
       try {
-        const res = await axios.get(`http://localhost:4000/api/v1/buses/search/${searchTitle}`);
+        const res = await axios.get(`https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/search/${searchTitle}`);
         console.log(res)
         if (res.data.buses.length < 1) {
           alert('Buses Not Found!');
@@ -75,7 +75,7 @@ const BusList = (props) => {
       const id = tripsRef.current[rowIndex]._id;
       if (window.confirm(`Do You want to delete a Bus with ID ${tripsRef.current[rowIndex].busID} ?`)) {
       try {
-				await axios.delete(`http://localhost:4000/api/v1/buses/delete/${id}`);
+				await axios.delete(`https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/delete/${id}`);
 			
         // let newBuses = [...tripsRef.current];
         // newBuses.splice(rowIndex, 1);

@@ -10,7 +10,7 @@ export default class SingleTrip extends Component {
   componentDidMount = async () => {
     const id = this.props.navigation.getParam(tripId, '')
     try {
-      const trip = await axios.get(`http://localhost:4000/api/v1/trips/${id}`);
+      const trip = await axios.get(`https://ticketing-mobileapp-service.herokuapp.com/api/v1/trips/${id}`);
       this.setState({ trip });
     } catch(error) {
       console.error(error);

@@ -64,7 +64,7 @@ export default class Registration extends Component {
             cvv: cvv
           };
           console.log('add user -> body', body);
-          const res = await axios.post('http://localhost:4000/api/v1/user/signup', body);
+          const res = await axios.post('https://ticketing-mobileapp-service.herokuapp.com/api/v1/user/signup', body);
           console.log(res);
           let doneObj = { message: res.data.message, type: 'success' };
           this.setState({ loading: false, doneObj: doneObj });

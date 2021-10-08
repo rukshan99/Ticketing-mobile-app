@@ -78,13 +78,14 @@ export default class CompleteTrip extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
+        <Text style={{fontSize: 25}}>
           Source:{' ' + this.state.source + '\n'}
           Destination:{' ' + this.state.destination + '\n'}
           No of passengers:{' ' + this.state.noOfPassengers + '\n'}
           Fare:{' RS: ' + this.state.fare + '/=\n'}
         </Text>
-        <View style={{ flexDirection: 'row' }}>
+
+        <View style={{ flexDirection: 'row' , Top: 45 }}>
           <Button
             title="Cancel"
             color="#ed665c"

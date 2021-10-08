@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, View, Text, TextInput } from 'react-native';
 import { StyleSheet } from 'react-native';
+import axios from 'axios';
 
 
 export default class UserDetails extends Component {
@@ -28,7 +29,7 @@ export default class UserDetails extends Component {
   }
 
   submit() {
-    axios.post('http://localhost:4000/api/v1/tripLogs/', this.state)
+    axios.post('https://ticketing-mobileapp-service.herokuapp.com/api/v1/tripLogs/', this.state)
       .then(response => {
         alert('User Details successfully inserted')
       })
