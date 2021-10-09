@@ -1,0 +1,13 @@
+import React from 'react';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+
+import Registration from "./components/UserRegistration";
+
+configure({ adapter: new Adapter() });
+
+it("Registration renders without crashing", () => {
+    shallow(<Registration />);
+});
+
