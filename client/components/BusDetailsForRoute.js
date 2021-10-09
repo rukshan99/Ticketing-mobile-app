@@ -33,7 +33,7 @@ export default class BusDetailsForRoute extends Component {
       route: route
     }
     let _radioValues = [];
-    axios.get('http://localhost:4000/api/v1/buses/buses', { params: { ...body } })
+    axios.get('https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/buses', { params: { ...body } })
       .then(response => {
         this.setState({ busessCollection: response.data.data }, () => {
           this.state.busessCollection.map((bus) => {

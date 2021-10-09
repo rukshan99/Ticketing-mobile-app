@@ -19,7 +19,7 @@ export default class AddBusDetails extends Component {
 
     submit() {
         this.setState({ isLoading: true });
-        axios.post('http://localhost:4000/api/v1/buses/', this.state)
+        axios.post('https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/', this.state)
             .then(response => {
              this.setState({ isLoading: false });
             })
@@ -37,32 +37,32 @@ export default class AddBusDetails extends Component {
                 <TextInput
                     placeholder="Enter Bus ID"
                     onChangeText={(text) => { this.setState({ busID: text }) }}
-                    style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50 }}
+                    style={{ borderWidth: 1, borderColor: 'black', margin: 10, height: 50 }}
                 />
                 <TextInput
                     placeholder="Enter Date"
                     onChangeText={(text) => { this.setState({ date: text }) }}
-                    style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50}}
+                    style={{ borderWidth: 1, borderColor: 'black', margin: 10, height: 50}}
                 />
                 <TextInput
                     placeholder="Enter Time"
                     onChangeText={(text) => { this.setState({ time: text }) }}
-                    style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50 }}
+                    style={{ borderWidth: 1, borderColor: 'black', margin: 10, height: 50 }}
                 />
                 <TextInput
                     placeholder="Enter Route"
                     onChangeText={(text) => { this.setState({ route: text }) }}
-                    style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50 }}
+                    style={{ borderWidth: 1, borderColor: 'black', margin: 10, height: 50 }}
                 />
                 <TextInput
                     placeholder="Enter Bus No"
                     onChangeText={(text) => { this.setState({ BusNo: text }) }}
-                    style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50 }}
+                    style={{ borderWidth: 1, borderColor: 'black', margin: 10, height: 50 }}
                 />
                 <TextInput
                     placeholder="Enter Stations as a comma separated list"
                     onChangeText={(text) => { this.setState({ Stations: text }) }}
-                    style={{ borderWidth: 1, borderColor: 'black', margin: 20, height: 50 }}
+                    style={{ borderWidth: 1, borderColor: 'black', margin: 10, height: 50 }}
                 />
 
                 <View style={{ width: 100, left: 150 }}>

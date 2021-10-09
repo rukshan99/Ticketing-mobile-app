@@ -31,7 +31,7 @@ export default class UserAccount extends Component {
   componentDidMount = async () => {
     const userid = getLoggedInUserData();
     try {
-      const res = await axios.get('http://localhost:4000/api/v1/trips');
+      const res = await axios.get('https://ticketing-mobileapp-service.herokuapp.com/api/v1/trips');
       console.log(res.data);
       //this.setState({ticketsList: res.data});
     } catch(error) {

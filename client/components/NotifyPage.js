@@ -20,19 +20,19 @@ export default class NotifyPage extends Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:4000/api/v1/user/allDrivers')
+        axios.get('https://ticketing-mobileapp-service.herokuapp.com/api/v1/user/allDrivers')
         .then(response => {
              console.log('driversCollection',response.data);
         this.setState({ driversCollection: response.data.data });
         })
 
-        axios.get('http://localhost:4000/api/v1/user/allConductors')
+        axios.get('https://ticketing-mobileapp-service.herokuapp.com/api/v1/user/allConductors')
         .then(response => {
              console.log('conductorCollection',response.data);
         this.setState({ conductorCollection: response.data.data });
         })
 
-        axios.get('http://localhost:4000/api/v1/user/allInspectors')
+        axios.get('https://ticketing-mobileapp-service.herokuapp.com/api/v1/user/allInspectors')
         .then(response => {
              console.log('inspectorCollection',response.data);
         this.setState({ inspectorCollection: response.data.data });

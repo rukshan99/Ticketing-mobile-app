@@ -16,7 +16,7 @@ export default class AddBusDetails extends Component {
     }
     submit() {
         const id = this.props.route.params.id;
-        axios.put(`http://localhost:4000/api/v1/buses/edit/${id}`, this.state)
+        axios.put(`https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/edit/${id}`, this.state)
             .then(response => {
                
             })
@@ -30,7 +30,7 @@ export default class AddBusDetails extends Component {
     componentDidMount = async () =>{
         const id = this.props.route.params.id;
         try {
-			const res = await axios.get(`http://localhost:4000/api/v1/buses/edit/${id}`);
+			const res = await axios.get(`https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/edit/${id}`);
             const buses = res.data.data;
             console.log(buses)
 			this.setState({

@@ -25,7 +25,7 @@ export default class SelectRoute extends Component {
             sourse: sourse,
             destination: destination
         }
-        axios.get('http://localhost:4000/api/v1/buses/routes', { params: { ...body } })
+        axios.get('https://ticketing-mobileapp-service.herokuapp.com/api/v1/buses/routes', { params: { ...body } })
             .then(response => {
                 this.setState({ routesCollection: response.data.data });
 
